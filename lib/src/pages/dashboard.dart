@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:track_one/src/services/service_locator.dart';
 import 'package:track_one/src/widgets/weather_card.dart';
 
 class Dashboard extends StatefulWidget {
@@ -11,6 +13,9 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  int? degree = getIt<SharedPreferences>().getInt("degree");
+  String? description = getIt<SharedPreferences>().getString("description");
+
   final Completer<GoogleMapController> _controller = Completer();
   static final CameraPosition _kGoogleplex =
       const CameraPosition(target: LatLng(9.9874879, 76.2843212), zoom: 15);
@@ -52,6 +57,7 @@ class _DashboardState extends State<Dashboard> {
   void initState() {
     super.initState();
     // loadData();
+    print(degree);
   }
 
   @override
@@ -73,9 +79,11 @@ class _DashboardState extends State<Dashboard> {
         Positioned(
             top: 20,
             left: 110,
-            child: WeatherCard(degree: "degree\u2103", type: "type"))
+            child: WeatherCard(
+              degree: degree.toString(),
+              type: description.toString(),
+            )),
       ]),
-
     ));
   }
 }

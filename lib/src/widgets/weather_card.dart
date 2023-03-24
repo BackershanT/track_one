@@ -19,7 +19,7 @@ class WeatherCard extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 24,top:11 ,bottom: 20),
-          child: Icon(Icons.sunny,size: 60,),
+          child:Image.network('https://cdn2.iconfinder.com/data/icons/weather-flat-14/64/weather02-512.png')
         ),
         Padding(
           padding: const EdgeInsets.only(left: 42.0,top: 16),

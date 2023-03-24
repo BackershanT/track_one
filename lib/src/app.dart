@@ -11,9 +11,8 @@ class MyApp extends StatelessWidget {
       title: 'Track One',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-
       ),
-      home:AuthPage(),
+      home:const AuthPage(),
     );
   }
 }

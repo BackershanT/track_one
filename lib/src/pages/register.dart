@@ -14,14 +14,11 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  ///textediting_controller
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmpasswordController = TextEditingController();
 
-  ///sign_Up_user_method
   void signUserUp() async {
-    ///show loading circle
     showDialog(
         context: context,
         builder: (context) {
@@ -30,25 +27,16 @@ class _RegisterPageState extends State<RegisterPage> {
           );
         });
 
-    ///try sign iin
     try {
-      //check if password is confirmed
       if (passwordController.text == confirmpasswordController.text) {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: emailController.text, password: passwordController.text);
-
-
-
-
       } else {
-        //show error Mesage
         showErrorMessage("password didnt match!");
       }
 
-      ///pop the loading Circle
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
-      ///pop the loading Circle
       Navigator.pop(context);
       showErrorMessage(e.code);
     }
@@ -68,9 +56,10 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(resizeToAvoidBottomInset: false,
-          body: SingleChildScrollView(
-            child: Container(
+        child: Scaffold(
+            resizeToAvoidBottomInset: false,
+            body: SingleChildScrollView(
+              child: Container(
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
                   child: Column(
@@ -98,7 +87,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 30.0,top: 72),
+                          padding: const EdgeInsets.only(left: 30.0, top: 72),
                           child: Row(
                             children: [
                               Text(
@@ -120,40 +109,29 @@ class _RegisterPageState extends State<RegisterPage> {
                           hintText: 'Password',
                           obscureText: true,
                           controller: passwordController,
-                        ),UsersText(
+                        ),
+                        UsersText(
                           hintText: 'Confirm Password',
                           obscureText: true,
                           controller: confirmpasswordController,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 30,top: 50,),
-                          child: Row(
-                            children: [
-                              Text('I agree with TERMS & CONDITIONS',style: TextStyle(color: AppTheme.colors.midgrey),)
-                            ],
-                          ),
-                        ),
-                        Padding(
                           padding: const EdgeInsets.only(top: 20),
-                          child: LoginButton(text: 'Submit',onTap: signUserUp,
-
+                          child: LoginButton(
+                            text: 'Submit',
+                            onTap: signUserUp,
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(130,50, 0, 0),
-                          child: GestureDetector( onTap: widget.onTap,
+                          padding: const EdgeInsets.fromLTRB(130, 50, 0, 0),
+                          child: GestureDetector(
+                            onTap: widget.onTap,
                             child: Row(
-                              children: [
-                                Text('Already have an Account?')
-                              ],
+                              children: [Text('Already have an Account?')],
                             ),
                           ),
                         )
-
-                      ])
-              ),
-          )
-        )
-    );
+                      ])),
+            )));
   }
 }

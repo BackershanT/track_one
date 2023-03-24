@@ -17,42 +17,36 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  void signUserIn()async{
+  void signUserIn() async {
     showDialog(
         context: context,
         builder: (context) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         });
 
-    ///try sign iin
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailController.text,
-          password: passwordController.text);
-
-        await getIt<AuthManager>().getTemperature();
-      ///pop the loading Circle
+          email: emailController.text, password: passwordController.text);
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
-
-
-      ///pop the loading Circle
       Navigator.pop(context);
       showErrorMessage(e.code);
     }
   }
+
   void showErrorMessage(String message) {
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
+        return const AlertDialog(
           title: Text('Incorrect Email or password'),
         );
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -69,19 +63,19 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.fromLTRB(39, 26, 0, 0),
                   child: Row(
                     children: [
-                      Text(
+                      const Text(
                         'Track',
-                        style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       Icon(
                         Icons.location_on,
                         color: AppTheme.colors.red,
                       ),
-                      Text(
+                      const Text(
                         'ne',
-                        style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       )
                     ],
                   ),
@@ -89,11 +83,11 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.only(left: 30, top: 72),
                   child: Row(
-                    children: [
+                    children: const [
                       Text(
                         'Welcome Back !',
-                        style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
@@ -101,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.only(left: 30, top: 10),
                   child: Row(
-                    children: [
+                    children: const [
                       Text(
                         'Sign in to continue',
                         style: TextStyle(
@@ -129,7 +123,8 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.only(top: 20.0),
                   child: Text(
                     'Forget Password ?',
-                    style: TextStyle(fontSize: 15, color: AppTheme.colors.black),
+                    style:
+                        TextStyle(fontSize: 15, color: AppTheme.colors.black),
                   ),
                 ),
                 Padding(
@@ -145,8 +140,8 @@ class _LoginPageState extends State<LoginPage> {
                         onTap: widget.onTap,
                         child: Text(
                           'Sign Up',
-                          style:
-                              TextStyle(color: AppTheme.colors.black, fontSize: 15),
+                          style: TextStyle(
+                              color: AppTheme.colors.black, fontSize: 15),
                         ),
                       ),
                     ],

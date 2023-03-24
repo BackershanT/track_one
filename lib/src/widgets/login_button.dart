@@ -19,7 +19,11 @@ class LoginButton extends StatelessWidget {
               decoration: BoxDecoration(
                   color: AppTheme.colors.red,
                   borderRadius: BorderRadius.circular(26)),
-          child: Center(child: Text(text,style: TextStyle(color: AppTheme.colors.white,fontSize: 16),)))),
+              child: Center(
+                  child: Text(
+                text,
+                style: TextStyle(color: AppTheme.colors.white, fontSize: 16),
+              )))),
     );
   }
 }

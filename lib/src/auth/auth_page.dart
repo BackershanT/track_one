@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:track_one/src/auth/auth_manager.dart';
 import 'package:track_one/src/pages/home_page.dart';
+import 'package:track_one/src/services/service_locator.dart';
 import 'package:track_one/src/widgets/login_or_signup.dart';
 
 class AuthPage extends StatelessWidget {
@@ -10,13 +12,14 @@ class AuthPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder<User?>(
-        stream:FirebaseAuth.instance.authStateChanges(),
-        builder: (context,snapshot){
-          if (snapshot.hasData){
-            return  const HomePage();
-          }
-          else{
-            return  const LoginOrSignUp();
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            getIt<AuthManager>().getTemperature();
+
+            return const HomePage();
+          } else {
+            return const LoginOrSignUp();
           }
         },
       ),

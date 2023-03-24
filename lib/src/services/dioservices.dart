@@ -1,10 +1,8 @@
 import 'package:dio/dio.dart';
 
 class DioClient {
-
-  final String baseUrl = "http://api.openweathermap.org/data/2.5/weather?lat=10.019670730071525&lon=76.3421626530782&APPID=21d6e175e99da7893408f2c0d5f60fdc";
-
-
+  final String baseUrl =
+      "http://api.openweathermap.org/data/2.5/weather?lat=10.019670730071525&lon=76.3421626530782&APPID=21d6e175e99da7893408f2c0d5f60fdc";
 
   get(String endUrl, {String? token}) async {
     var dio = Dio();
@@ -15,13 +13,13 @@ class DioClient {
         return response.data;
       }
       if (token != null) {
-        Response response = await dio.get(url, options: Options(headers: {'Authorization': 'Bearer $token'}));
+        Response response = await dio.get(url,
+            options: Options(headers: {'Authorization': 'Bearer $token'}));
         return response.data;
       }
-    } catch (e) {
-
-    }
+    } catch (e) {}
   }
+
   gt(String endUrl, {String? token}) async {
     var dio = Dio();
     String url = endUrl;
@@ -31,13 +29,10 @@ class DioClient {
         return response.data;
       }
       if (token != null) {
-        Response response = await dio.get(url, options: Options(headers: {'Authorization': 'Bearer $token'}));
+        Response response = await dio.get(url,
+            options: Options(headers: {'Authorization': 'Bearer $token'}));
         return response.data;
       }
-    } catch (e){
-
-    }
-    }
+    } catch (e) {}
+  }
 }
-
-
