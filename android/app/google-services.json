@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "78886161874",
+    "project_id": "trackone-83568",
+    "storage_bucket": "trackone-83568.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78886161874:android:393622b9a3ad491ce08c0b",
+        "android_client_info": {
+          "package_name": "com.example.track_one"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78886161874-pavrs4hfbeu3hm7c1202bnqo8e1oc15m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJASzsFMFPBYdFxXM37q_gOCNVwZdas5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78886161874-pavrs4hfbeu3hm7c1202bnqo8e1oc15m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
