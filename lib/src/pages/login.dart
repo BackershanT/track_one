@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:track_one/src/app_colors/color.dart';
+import 'package:track_one/src/auth/auth_manager.dart';
+import 'package:track_one/src/services/service_locator.dart';
 import 'package:track_one/src/widgets/login_button.dart';
 import 'package:track_one/src/widgets/users_text.dart';
 
@@ -30,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
           email: emailController.text,
           password: passwordController.text);
 
+        await getIt<AuthManager>().getTemperature();
       ///pop the loading Circle
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {

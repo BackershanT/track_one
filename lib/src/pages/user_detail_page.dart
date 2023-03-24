@@ -8,9 +8,11 @@ import 'package:track_one/src/widgets/weather_card.dart';
 
 class UserDetailPage extends StatefulWidget {
   final name;
+  final lati;
+  final long;
 
 
-  const UserDetailPage({Key? key, required this.name, }) : super(key: key);
+  const UserDetailPage({Key? key, required this.name, required this.lati, required this.long, }) : super(key: key);
 
   @override
   State<UserDetailPage> createState() => _UserDetailPageState();
@@ -18,8 +20,9 @@ class UserDetailPage extends StatefulWidget {
 
 class _UserDetailPageState extends State<UserDetailPage> {
 
-
   final Completer<GoogleMapController> _controller = Completer();
+
+
 
   static final CameraPosition _kGoogleplex =
       const CameraPosition(target:
@@ -28,10 +31,10 @@ class _UserDetailPageState extends State<UserDetailPage> {
 
   final Set <Marker> _markers={};
   final Set <Polyline> _polyline={};
-
   List<LatLng> latlng=[
     LatLng(9.9874879, 76.2843212),
-    LatLng(10.027005, 76.367353)
+  //   LatLng(19.9874879, 76.2843212),
+  //   // LatLng()
   ];
 
 
@@ -43,11 +46,11 @@ class _UserDetailPageState extends State<UserDetailPage> {
     i < latlng.length; i++ ){
       _markers.add(
         Marker(
-            markerId: MarkerId(i.toString()),
-            position: latlng[i],
+            markerId: MarkerId(latlng.toString()),
+            position: latlng[widget.lati+widget.long],
         infoWindow: InfoWindow(
-          title: 'Really cool place',
-              snippet: '5Star'
+          title: widget.name,
+              snippet: '**'
         ),
           icon: BitmapDescriptor.defaultMarker
         )
@@ -66,6 +69,8 @@ class _UserDetailPageState extends State<UserDetailPage> {
 
 
   }
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

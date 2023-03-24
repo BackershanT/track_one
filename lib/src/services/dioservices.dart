@@ -22,6 +22,22 @@ class DioClient {
 
     }
   }
+  gt(String endUrl, {String? token}) async {
+    var dio = Dio();
+    String url = endUrl;
+    try {
+      if (token == null) {
+        Response response = await dio.get(url);
+        return response.data;
+      }
+      if (token != null) {
+        Response response = await dio.get(url, options: Options(headers: {'Authorization': 'Bearer $token'}));
+        return response.data;
+      }
+    } catch (e){
 
-
+    }
+    }
 }
+
+

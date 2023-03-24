@@ -1,3 +1,4 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +70,7 @@ class _UsersListState extends State<UsersList> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                   UserDetailPage (name: list[index]['name'],
+                                                   UserDetailPage (name: list[index]['name'],  lati: list[index]['lattitude'], long: list[index]['longitude'],
 
                                                   )));
                                     },
